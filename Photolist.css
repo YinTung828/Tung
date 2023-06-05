@@ -1,0 +1,56 @@
+.photolist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.photolist .photo {
+  width: 25%;
+  padding: 0px;
+  position: relative;
+  background-color: whitesmoke; /* Add background color to the caption */
+  transition: opacity 0.3s ease-in-out; /* Add transition effect for opacity */
+}
+
+.photolist .photo img {
+  width: 100%;
+  aspect-ratio: 1/1; /* Set the aspect ratio to maintain a square shape */
+  object-fit: cover;
+}
+
+.photolist .photo .caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  color: #ffffff;
+  padding: 0px 0px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.photolist .photo:hover img {
+  filter: brightness(30%);
+}
+
+/* Update for smaller screens */
+@media only screen and (max-width: 900px) {
+  .photolist .photo {
+    width: 33.3333%; /* Display two photos per row */
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .photolist .photo {
+    width: 50%; /* Display one photo per row */
+  }
+}
+
+/* Adjust photo size for smaller screens */
+@media only screen and (max-width: 400px) {
+  .photolist .photo img {
+    width: 80%;
+  }
+}

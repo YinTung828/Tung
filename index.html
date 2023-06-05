@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="Photolist.css">
+<link rel="stylesheet" href="Slideshow.css">
+<style>
+  body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  background-color: transparent;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index:999;
+}
+
+.topnav a {
+  float: left;
+  color: purple;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav-right {
+  float: right;
+}
+
+.topnav-left {
+  float: left;
+}
+
+.topnav input[type=text] {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border: none;
+  font-size: 17px;
+  background-color: #f2f2f2;
+  padding-left: 40px;
+  border-radius: 5px;
+}
+
+input[type=text]::placeholder {
+  color: #999;
+}
+
+/* Change the opacity on focus */
+input[type=text]:focus::placeholder {
+  opacity: 0.7;
+}
+
+.topnav-right .icon {
+  display: none;
+}
+
+.topnav .search-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 22px;
+  left: 110px;
+  transform: translateY(-50%);
+}
+
+.topnav .search-btn i {
+  color: purple;
+  font-size: 16px;
+}
+
+.topnav .search-btn i:hover {
+  color: black;
+}
+
+@media screen and (max-width: 900px) {
+  .topnav-right a {
+    display: none;
+  }
+  .topnav-right a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav-left input[type=text] {
+    display: none;
+  }
+}
+
+/* Styles for sidebar */
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  right: -250px;
+  background-color: whitesmoke;
+  overflow-x: hidden;
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.sidebar a {
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: purple;
+  display: block;
+}
+
+.sidebar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: -3px;
+  right: 10px;
+  font-size: 24px;
+  margin-left: 50px;
+  background-color: transparent;
+  color: purple; /* Add this line */
+}
+
+.sidebar .closebtn:hover {
+  background-color: transparent; /* Add this line */
+}
+.search-icon {
+position: relative;
+display: inline-block;
+}
+
+.search-icon i {
+position: absolute;
+top: 60%;
+transform: translateY(-50%);
+left: 15px; /* Adjust the left position as needed */
+}
+
+
+
+footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Add this line */
+    z-index: 9999; /* Add this line */
+  }
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-content p {
+  margin: 0;
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #555;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #000;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="topnav">
+    <div class="topnav-left">
+      <a href="#">Left Word 1</a>
+      <span class="search-icon">
+        <input type="text" placeholder="Search..." id="searchInput">
+        <i class="fa fa-search"></i>
+      </span>
+      <button class="search-btn"><i class="fa fa-search"></i></button>
+    </div>
+
+    <div class="topnav-right" id="myTopnav">
+      <a href="#">Right Word 1</a>
+      <a href="#">Right Word 2</a>
+      <a href="#">Right Word 3</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()" id="menuButton">
+        <i class="fa fa-bars"></i>
+      </a>
+      
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <a href="#">Sidebar Link 1</a>
+    <a href="#">Sidebar Link 2</a>
+    <a href="#">Sidebar Link 3</a>
+  </div>
+
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <img src="1.jpg" style="width:100%">
+      <div class="text">Caption Text</div>
+    </div>
+    <div class="mySlides fade">
+      <img src="2.jpg" style="width:100%">
+      <div class="text">Caption Two</div>
+    </div>
+    <div class="mySlides fade">
+      <img src="3.jpg" style="width:100%">
+      <div class="text">Caption Three</div>
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+  </div>
+  
+  <div class="photolist">
+    <div class="photo">
+      <img src="1.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="2.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="3.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="2.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="1.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="2.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="3.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="2.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="1.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="2.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="3.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="2.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="1.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="2.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="3.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="2.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="1.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="2.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="3.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="2.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="1.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="2.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="3.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+    <div class="photo">
+      <img src="2.jpg" style="width:100%">
+      <div class="caption">Caption 1</div>
+    </div>
+  </div>
+<footer>
+  <div class="footer-content">
+    <p>© 2023 Your Website. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+  <script src="Image Slideshow.js"> </script>
+  <script src="Topnav_Side Bar.js">  </script>
+  <script src="Topnav_Icon.js"></script>
+  <script>
+    window.addEventListener("scroll", function() {
+      var slideshowContainer = document.querySelector(".slideshow-container");
+      var scrollPosition = window.scrollY || window.pageYOffset;
+      slideshowContainer.style.transform = "translateY(" + scrollPosition + "px)";
+    });
+  </script>
+  
+  </body>
+  </html>
